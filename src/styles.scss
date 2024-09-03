@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+
+:root {
+  --menu-bg-color: #f0f0f0;
+  --menu-item-bg-color: #ffffff;
+  --menu-item-hover-bg-color: #c0c0c0;
+  --menu-item-active-bg-color: #08a227;
+  --menu-item-text-color: #333333;
+  --menu-item-icon-color: #08a227;
+  --menu-item-border-radius: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nerko One", cursive;
+  font-weight: 400;
+  font-style: normal;
+  //cursor: none;
+  //user-select: none;
+  //pointer-events: none;
+  //touch-action: none;
+  // TODO FOR PROD
+}
+
+body {
+  background-color: var(--menu-bg-color);
+}
+
+html, body { height: 100%; }

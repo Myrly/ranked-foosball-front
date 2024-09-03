@@ -1,0 +1,9 @@
+<div [class.selected]="isSelected" class="menu-item">
+  <mat-icon [svgIcon]="icon" class="icon"></mat-icon>
+  <div class="title">{{ title }}</div>
+  <div class="keys">
+    <p *ngIf="isSelected">␣</p>
+    <p>{{ key }}</p>
+    <p *ngIf="isSelected">↵</p>
+  </div>
+</div>

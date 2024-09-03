@@ -1,0 +1,9 @@
+<div class="menu">
+  <app-multiple-options-menu-item
+    *ngFor="let item of menuItems; let i = index"
+    [title]="item.title"
+    [icon]="item.icon"
+    [isSelected]="i === selectedIndex"
+    [key]="item.key"
+  ></app-multiple-options-menu-item>
+</div>
