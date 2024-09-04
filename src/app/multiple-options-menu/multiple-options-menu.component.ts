@@ -17,7 +17,7 @@ import {MultipleOptionsMenuItem} from "../models/multiple-options-menu-item.mode
 export class MultipleOptionsMenuComponent implements AfterViewInit {
   @ViewChildren(MultipleOptionsMenuItemComponent, { read: ElementRef }) menuItemsRefs: QueryList<ElementRef> = null!;
   @Input() menuItems: MultipleOptionsMenuItem[] = [];
-  selectedIndex = 0;
+  selectedIndex: number = 0;
 
   constructor(private router: Router) {}
 
@@ -64,10 +64,9 @@ export class MultipleOptionsMenuComponent implements AfterViewInit {
       case 'Space':
         this.selectItem();
         break;
-      // case any of the key in menuItems.key => selectItem()
       default:
-        const key = event.key.toUpperCase();
-        const index = this.menuItems.findIndex(item => item.key === key);
+        const key: string = event.key.toUpperCase();
+        const index: number = this.menuItems.findIndex(item => item.key === key);
         if (index !== -1) {
           this.selectedIndex = index;
           this.selectItem();

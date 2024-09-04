@@ -1,0 +1,41 @@
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.spinner circle {
+  stroke: var(--menu-item-active-bg-color) !important;
+}
+
+.leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: auto;
+  font-size: 24px;
+}
+
+.leaderboard th, .leaderboard td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.leaderboard th {
+  //background-color: #4CAF50;
+  background-color: var(--menu-item-active-bg-color);
+  color: white;
+}
+
+.selected {
+  background-color: #4CAF50 !important;
+}
+
+.key {
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 9px;
+  padding: 2px 9px;
+  margin-right: 10px;
+}

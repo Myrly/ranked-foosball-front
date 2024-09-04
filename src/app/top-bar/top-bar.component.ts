@@ -1,14 +1,18 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, Input} from '@angular/core';
 import {Router} from "@angular/router";
+import {NgClass, NgStyle} from "@angular/common";
 
 @Component({
   selector: 'app-top-bar',
   standalone: true,
-  imports: [],
+  imports: [
+    NgClass
+  ],
   templateUrl: './top-bar.component.html',
   styleUrl: './top-bar.component.scss'
 })
 export class TopBarComponent {
+  @Input() content: 'center-content' | 'avoid-top-bar' = 'center-content';
 
   constructor(private router: Router) {
   }

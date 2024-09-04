@@ -6,9 +6,9 @@
   background-color: var(--menu-item-active-bg-color);
   color: white;
   font-size: 20px;
-  height: 60px;
+  height: var(--top-bar-size);
   gap: 10px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  //box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   position: fixed;
   width: 100%;
 }
@@ -23,4 +23,15 @@
 .back-text {
   font-size: 20px;
   color: white;
+}
+
+.avoid-top-bar {
+  padding-top: var(--top-bar-size);
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }

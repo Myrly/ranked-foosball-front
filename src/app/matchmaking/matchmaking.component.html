@@ -1,1 +1,19 @@
-<p>matchmaking works!</p>
+<app-top-bar [content]="'center-content'">
+  <div class="matchmaking">
+    <div class="teams">
+      <app-team-card [players]="team1"></app-team-card>
+      <mat-divider style="height: 20px; width: 90%;"></mat-divider>
+      <app-team-card [players]="team2"></app-team-card>
+    </div>
+    <div class="controls">
+      <div class="key-button">
+        <p class="key">↵</p>
+        <p class="back-text">Shuffle</p>
+      </div>
+      <div class="key-button">
+        <p class="key">␣</p>
+        <p class="back-text">Start Game</p>
+      </div>
+    </div>
+  </div>
+</app-top-bar>

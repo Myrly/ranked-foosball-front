@@ -16,7 +16,7 @@ export class HomeComponent {
   menuItems: MultipleOptionsMenuItem[] = [
     { title: 'Leaderboards', icon: 'trophy', route: '/leaderboard', key: 'L' },
     { title: 'Solo Match', icon: 'single-person', route: '/matchmaking/solo', key: 'S' },
-    { title: 'Team Match', icon: 'multiple-persons', route: '/doubles-which-method', key: 'T' },
+    { title: 'Team Match', icon: 'multiple-persons', route: '/matchmaking/doubles', key: 'T' },
   ];
 
 }

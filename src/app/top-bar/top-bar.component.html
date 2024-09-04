@@ -2,4 +2,6 @@
   <p class="key">ESC</p>
   <p class="back-text">Back</p>
 </div>
-<ng-content></ng-content>
+<div [ngClass]="content">
+  <ng-content></ng-content>
+</div>

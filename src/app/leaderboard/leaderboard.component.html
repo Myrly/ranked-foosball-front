@@ -1,3 +1,21 @@
-<app-top-bar>
-  <p>leaderboard works!</p>
+<app-top-bar [content]="'avoid-top-bar'">
+  <div *ngIf="isLoading" class="spinner-container">
+    <mat-spinner [diameter]="50" class="spinner"></mat-spinner>
+  </div>
+  <table class="leaderboard" *ngIf="!isLoading">
+    <thead>
+    <tr>
+      <th *ngFor="let sortingKey of sortingKeys" [ngClass]="{selected: currentKey === sortingKey.sorting}">
+        <span class="key">{{sortingKey.key}}</span> {{sortingKey.name}}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of players; let i = index">
+      <td *ngFor="let sortingKey of sortingKeys">
+        {{getDisplayValue(player, sortingKey)}}
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </app-top-bar>

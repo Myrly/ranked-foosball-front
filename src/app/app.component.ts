@@ -4,6 +4,7 @@ import {MultipleOptionsMenuComponent} from "./multiple-options-menu/multiple-opt
 import {MultipleOptionsMenuItem} from "./models/multiple-options-menu-item.model";
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
+import {DisableRightClickService} from "./services/disable-right-click.service";
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,9 @@ export class AppComponent {
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
+    private rightClickDisable: DisableRightClickService
   ) {
+    this.rightClickDisable.disableRightClick();
     this.svgIcons.forEach(icon => {
       this.matIconRegistry.addSvgIcon(
         icon,
