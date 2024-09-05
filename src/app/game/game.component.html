@@ -1,1 +1,26 @@
-<p>game works!</p>
+<div class="title">
+  <h1>Score Time !</h1>
+</div>
+<div class="team">
+  <div class="players">
+    <app-player-card *ngFor="let player of firstTeam" [playerId]="player"></app-player-card>
+  </div>
+  <app-score [possibleScoresKeys]="possibleScoresKeys" [selectedKey]="firstTeamScore"></app-score>
+</div>
+<mat-divider class="divider"></mat-divider>
+<div class="team">
+  <div class="players">
+    <app-player-card *ngFor="let player of secondTeam" [playerId]="player"></app-player-card>
+  </div>
+  <app-score [possibleScoresKeys]="possibleScoresKeys" [selectedKey]="secondTeamScore"></app-score>
+</div>
+<div class="controls">
+  <div class="key-button primary-button">
+    <p class="key">C</p>
+    <p class="back-text">Clear Score</p>
+  </div>
+  <div class="key-button" [ngClass]="readyToComplete() ? 'primary-button' : 'disabled-button'">
+    <p class="key">␣</p>
+    <p class="back-text">End Game</p>
+  </div>
+</div>

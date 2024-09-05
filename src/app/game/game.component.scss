@@ -1,0 +1,72 @@
+.title {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--menu-item-active-bg-color);
+  font-size: 2rem;
+}
+
+.team {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 10%;
+  .players {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  app-score {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.controls {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.key-button {
+  padding: 12px 24px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.primary-button {
+  background-color: var(--menu-item-active-bg-color);
+}
+
+.disabled-button {
+  background-color: var(--menu-item-disabled-bg-color);
+  color: #b3b3b3;
+}
+
+.key {
+  font-size: 28px;
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  color: white;
+}
+
+.back-text {
+  font-size: 24px;
+  color: white;
+}

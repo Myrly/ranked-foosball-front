@@ -1,0 +1,33 @@
+.score {
+  color: var(--menu-item-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  .key {
+    margin-top: 5px;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    background-color: #fff;
+    font-size: 24px;
+    border: 2px solid var(--menu-item-text-color);
+    border-radius: 12px;
+    padding: 5px 15px;
+
+    &.selected {
+      background-color: var(--menu-item-active-bg-color);
+      color: #fff;
+      border: 2px solid var(--menu-item-active-bg-color);
+    }
+  }
+
+}
+
+.divider {
+  height: 20px;
+  width: 90%;
+}
