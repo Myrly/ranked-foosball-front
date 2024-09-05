@@ -13,12 +13,15 @@ import {NgClass, NgStyle} from "@angular/common";
 })
 export class TopBarComponent {
   @Input() content: 'center-content' | 'avoid-top-bar' = 'center-content';
+  @Input() escDisabled: boolean = false;
+  @Input() rightText: string = '';
 
   constructor(private router: Router) {
   }
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
+    if (this.escDisabled) return;
     switch (event.key) {
       case 'Escape':
         this.navigate();

@@ -1,6 +1,9 @@
 <div class="top-bar">
-  <p class="key">ESC</p>
-  <p class="back-text">Back</p>
+  <div class="back-button">
+    <p class="key">ESC</p>
+    <p class="back-text">Back</p>
+  </div>
+  <p class="right-text">{{rightText}}</p>
 </div>
 <div [ngClass]="content">
   <ng-content></ng-content>
