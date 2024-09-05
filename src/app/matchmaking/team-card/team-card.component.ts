@@ -19,15 +19,7 @@ import {QueuedCardComponent} from "../player-card/queued-card/queued-card.compon
   templateUrl: './team-card.component.html',
   styleUrl: './team-card.component.scss'
 })
-export class TeamCardComponent implements OnInit {
-  @Input() players: (PlayerDto | 'current' | 'queued')[] = [];
-  @Input() teamsOf: number = 1;
-
-  ngOnInit() {
-    if (this.players.length < this.teamsOf) {
-
-    }
-  }
-
-  protected readonly PlayerDto = PlayerDto;
+export class TeamCardComponent {
+  @Input() players: (string | 'current' | 'queued')[] = [];
+  @Input() teamNumber: number = 1;
 }

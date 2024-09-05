@@ -1,7 +1,10 @@
-<div class="team">
-  <div *ngFor="let player of players">
-    <app-player-card *ngIf="player != 'current' && player != 'queued'" [player]="player"></app-player-card>
-    <app-current-card *ngIf="player == 'current'"></app-current-card>
-    <app-queued-card *ngIf="player == 'queued'"></app-queued-card>
+<section class="team-section">
+  <h2 class="team-number">Team {{teamNumber}}</h2>
+  <div class="team">
+    <div *ngFor="let player of players">
+      <app-player-card *ngIf="player != 'current' && player != 'queued'" [playerId]="player"></app-player-card>
+      <app-current-card *ngIf="player == 'current'"></app-current-card>
+      <app-queued-card *ngIf="player == 'queued'"></app-queued-card>
+    </div>
   </div>
-</div>
+</section>

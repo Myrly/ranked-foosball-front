@@ -41,6 +41,7 @@ $ranked-foosball-front-theme: mat.define-theme((
   --menu-item-bg-color: #ffffff;
   --menu-item-hover-bg-color: #c0c0c0;
   --menu-item-active-bg-color: #08a227;
+  --menu-item-disabled-bg-color: #808080;
   --menu-item-text-color: #333333;
   --menu-item-icon-color: #08a227;
   --menu-item-border-radius: 20px;
@@ -66,3 +67,8 @@ body {
 }
 
 html, body { height: 100%; }
+
+.divider {
+  height: 20px;
+  width: 100%;
+}

@@ -1,16 +1,17 @@
-<app-top-bar [content]="'center-content'">
-  <div class="matchmaking">
+<app-top-bar [content]="'center-content'" [escDisabled]="dialogOpen">
+  <mat-spinner *ngIf="isLoading" [diameter]="50" class="spinner"></mat-spinner>
+  <div class="matchmaking" *ngIf="!isLoading">
     <div class="teams">
-      <app-team-card [players]="team1"></app-team-card>
-      <mat-divider style="height: 20px; width: 90%;"></mat-divider>
-      <app-team-card [players]="team2"></app-team-card>
+      <app-team-card [players]="team1" [teamNumber]="1"></app-team-card>
+      <mat-divider class="divider"></mat-divider>
+      <app-team-card [players]="team2" [teamNumber]="2"></app-team-card>
     </div>
     <div class="controls">
-      <div class="key-button">
-        <p class="key">↵</p>
+      <div class="key-button" [ngClass]="readyToStart ? 'primary-button' : 'disabled-button'" *ngIf="teamsOf>1">
+        <p class="key">↹</p>
         <p class="back-text">Shuffle</p>
       </div>
-      <div class="key-button">
+      <div class="key-button" [ngClass]="readyToStart ? 'primary-button' : 'disabled-button'">
         <p class="key">␣</p>
         <p class="back-text">Start Game</p>
       </div>

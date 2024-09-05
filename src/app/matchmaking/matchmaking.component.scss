@@ -1,11 +1,10 @@
 .matchmaking {
-  //background: red;
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   padding-top: var(--top-bar-size);
 }
 
@@ -18,6 +17,7 @@
   height: 85%;
   app-team-card {
     height: 100%;
+    width: 100%
   }
 }
 
@@ -30,13 +30,21 @@
 }
 
 .key-button {
-  background-color: var(--menu-item-active-bg-color);
   padding: 12px 24px;
   border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.primary-button {
+  background-color: var(--menu-item-active-bg-color);
+}
+
+.disabled-button {
+  background-color: var(--menu-item-disabled-bg-color);
+  color: #b3b3b3;
 }
 
 .key {
@@ -50,4 +58,9 @@
 .back-text {
   font-size: 24px;
   color: white;
+}
+
+.spinner {
+  left: 50%;
+  translate: -50%;
 }

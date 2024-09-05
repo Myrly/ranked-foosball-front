@@ -12,5 +12,5 @@ import {PlayerDto} from "../../../dto/player.dto";
   styleUrl: './current-card.component.scss'
 })
 export class CurrentCardComponent {
-  currentPlayer: PlayerDto = new PlayerDto('current', 'Waiting...', -1, 0, 0, 0);
+  currentPlayer: string = 'current';
 }

@@ -6,6 +6,7 @@ export class PlayerDto {
     public wins: number,
     public games: number,
     public wlr: number,
+    public _id: string,
   ) {
   }
 }

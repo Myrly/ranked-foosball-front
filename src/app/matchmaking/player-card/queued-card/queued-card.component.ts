@@ -12,5 +12,5 @@ import {PlayerDto} from "../../../dto/player.dto";
   styleUrl: './queued-card.component.scss'
 })
 export class QueuedCardComponent {
-  queuedPlayer: PlayerDto = new PlayerDto('queued', 'Queued.', -1, 0, 0, 0);
+  queuedPlayer: string = 'queued';
 }
