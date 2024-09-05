@@ -5,6 +5,8 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {LeaderboardSortingPropertyModel} from "../models/leaderboard-sorting-property.model";
 import {LeaderboardService} from "../services/leaderboard.service";
+import {Router} from "@angular/router";
+import {PlayerService} from "../services/player.service";
 
 @Component({
   selector: 'app-leaderboard',
@@ -23,6 +25,8 @@ export class LeaderboardComponent implements OnInit {
 
   constructor(
     private leaderboardService: LeaderboardService,
+    private router: Router,
+    private playerService: PlayerService,
   ) {
   }
 
@@ -37,12 +41,14 @@ export class LeaderboardComponent implements OnInit {
     {name: 'WLR', key: 'R', sorting: '-wlr', propertyName: 'wlr'},
   ];
 
+  playerId: string = '';
+
   ngOnInit(): void {
     this.sortPlayers().then(r => console.info('Updated players.'));
   }
 
   @HostListener('window:keydown', ['$event'])
-  handleKeyDown(event: KeyboardEvent) {
+  async handleKeyDown(event: KeyboardEvent) {
     let currentIndex: number;
     switch (event.key) {
       case 'ArrowRight':
@@ -60,13 +66,26 @@ export class LeaderboardComponent implements OnInit {
         this.sortPlayers().then(r => console.info('Updated players.'));
         event.preventDefault();
         break;
+      case 'Enter':
+        (await this.playerService.getPlayer(this.playerId, 'safe')).subscribe(response => {
+          this.playerId = '';
+          console.log(response);
+          if (response != 'error') {
+            this.router.navigate(['/profile/' + ((response) as PlayerDto)['_id']]);
+          }
+        });
+        break;
       default:
         event.preventDefault();
         const key: string = event.key.toUpperCase();
-        const index: number = this.sortingKeys.findIndex(item => item.key === key);
-        if (index !== -1) {
-          this.currentKey = this.sortingKeys[index].sorting;
-          this.sortPlayers().then(r => console.info('Updated players.'));
+        if (event.key.match(/^[0-9a-fA-F]$/)) {
+          this.playerId += key;
+        } else {
+          const index: number = this.sortingKeys.findIndex(item => item.key === key);
+          if (index !== -1) {
+            this.currentKey = this.sortingKeys[index].sorting;
+            this.sortPlayers().then(r => console.info('Updated players.'));
+          }
         }
     }
   }
@@ -86,7 +105,11 @@ export class LeaderboardComponent implements OnInit {
         return player[sortingKey.propertyName].toFixed(0);
       case 'wlr':
         const wlr = player[sortingKey.propertyName];
-        return wlr % 1 === 0 ? wlr.toString() : wlr.toFixed(2);
+        let newWlr = wlr % 1 === 0 ? wlr.toString() : wlr.toFixed(2);
+        if (newWlr.length > 1 && newWlr.endsWith('0')) {
+          newWlr = newWlr.slice(0, newWlr.length - 1);
+        }
+        return newWlr;
       default:
         return player[sortingKey.propertyName].toString();
     }

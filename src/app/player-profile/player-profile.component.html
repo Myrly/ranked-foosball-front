@@ -1,0 +1,22 @@
+<app-top-bar [content]="'center-content'" [escDisabled]="dialogOpen">
+  <div class="player-profile" *ngIf="player">
+    <h2>{{ player.name }}</h2>
+    <p>ELO : {{ getDisplayElo(player.elo) }}</p>
+    <div class="win-loss">
+    <p>Wins : {{ player.wins }}</p>
+    <p>Loss : {{ player.games - player.wins }}</p>
+    </div>
+    <p>Games : {{ player.games }}</p>
+    <p>Win/Loss Ratio : {{ getDisplayWlr(player.wlr) }}</p>
+    <div class="controls">
+      <div class="key-button primary-button">
+        <p class="key">N</p>
+        <p class="back-text">Change Name</p>
+      </div>
+      <div class="key-button delete-button">
+        <p class="key">D</p>
+        <p class="back-text">Delete Account</p>
+      </div>
+    </div>
+  </div>
+</app-top-bar>

@@ -1,0 +1,8 @@
+<h1 mat-dialog-title class="dialog-title">{{ data.title }}</h1>
+<div mat-dialog-content class="dialog-content">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Jake Peralta" [formControl]="nameController" #nameInput required>
+  </mat-form-field>
+  <p>{{(badgeToConfirm ? 'Badge to confirm' : 'Press Tab to continue')}}</p>
+</div>
