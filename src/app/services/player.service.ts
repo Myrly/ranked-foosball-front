@@ -24,4 +24,12 @@ export class PlayerService {
     return this.http.post(environment.apiUrl + "/player/", {id: playerId, name: playerName});
   }
 
+  async editPlayer(playerId: string, playerName: string) {
+    return this.http.patch(environment.apiUrl + "/player/" + playerId, {name: playerName});
+  }
+
+  async deletePlayer(playerId: string) {
+    return this.http.delete(environment.apiUrl + "/player/" + playerId);
+  }
+
 }

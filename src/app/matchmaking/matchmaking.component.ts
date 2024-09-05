@@ -79,9 +79,8 @@ export class MatchmakingComponent implements OnInit {
                 this.dialogOpen = true;
 
                 dialogRef.afterClosed().subscribe(async result => {
+                  this.dialogOpen = false;
                   if (!result) return;
-                  console.log('New player name:', result.name);
-                  console.log('Badge ID:', result.badgeId);
                   (await this.playerService.createPlayer(result.badgeId, result.name)).subscribe(response => {
                     this.addPlayer((response as PlayerDto)._id, allPlayer, playerIndex);
                   });
@@ -90,7 +89,6 @@ export class MatchmakingComponent implements OnInit {
                       this.currentPlayerId = result.badgeId;
                     }
                   });
-                  this.dialogOpen = false;
                 });
                 break;
             }
