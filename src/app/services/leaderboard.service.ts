@@ -12,7 +12,7 @@ export class LeaderboardService {
   ) { }
 
   async getLeaderboard(sorting: string) {
-    return this.http.get(environment.apiUrl + "/player/" + sorting);
+    return this.http.get(environment.apiUrl + "/player/many/" + sorting);
   }
 
 }

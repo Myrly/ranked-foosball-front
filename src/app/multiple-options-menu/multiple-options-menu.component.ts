@@ -61,7 +61,7 @@ export class MultipleOptionsMenuComponent implements AfterViewInit {
         event.preventDefault();
         break;
       case 'Enter':
-      case 'Space':
+      case ' ':
         this.selectItem();
         break;
       default:
