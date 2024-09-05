@@ -1,7 +1,7 @@
 export class AddPlayerGameDto {
 
   constructor(
-    public gameId: number,
+    public gameId: string,
     public isFirstTeam: boolean,
     public playerId: string,
   ) {
