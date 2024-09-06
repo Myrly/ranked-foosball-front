@@ -56,11 +56,10 @@ $ranked-foosball-front-theme: mat.define-theme((
   font-family: "Nerko One", cursive;
   font-weight: 400;
   font-style: normal;
-  //cursor: none;
-  //user-select: none;
-  //pointer-events: none;
-  //touch-action: none;
-  // TODO FOR PROD
+  cursor: none;
+  user-select: none;
+  pointer-events: none;
+  touch-action: none;
 }
 
 body {
