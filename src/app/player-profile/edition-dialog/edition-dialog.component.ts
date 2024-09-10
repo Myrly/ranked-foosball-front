@@ -61,7 +61,7 @@ export class EditionDialogComponent implements OnInit, AfterViewInit {
       } else if (event.key === 'Enter') {
         this.dialogRef.close({ name: this.nameController.value, badgeId: this.badgeId });
       }
-    } else if (event.key === 'Tab') {
+    } else if (event.key === 'Tab' || event.key === 'Enter') {
       this.nameInput.nativeElement.blur();
       this.badgeToConfirm = true;
       event.preventDefault();
