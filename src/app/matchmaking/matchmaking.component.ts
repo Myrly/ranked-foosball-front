@@ -47,6 +47,13 @@ export class MatchmakingComponent implements OnInit {
   ) {
   }
 
+  async onEsc() {
+    (await this.matchmakingService.cancelGame(this.gameID)).subscribe(response => {
+      console.info('Game cancelled');
+      this.router.navigate(['/']).then(r => console.info('Navigated to home'));
+    });
+  }
+
   @HostListener('window:keydown', ['$event'])
   async handleKeyDown(event: KeyboardEvent) {
     if (this.dialogOpen) return;

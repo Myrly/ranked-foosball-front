@@ -2,15 +2,13 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {GameService} from "../services/game.service";
-import {AddPlayerGameDto} from "../dto/add-player.dto";
 import {CreateGameDto} from "../dto/create-game.dto";
 import {TeamCardComponent} from "../matchmaking/team-card/team-card.component";
 import {MatDivider} from "@angular/material/divider";
 import {ScoreComponent} from "./score/score.component";
 import {PlayerCardComponent} from "../matchmaking/player-card/player-card.component";
-import {MatDialogRef} from "@angular/material/dialog";
-import {NewPlayerDialogComponent} from "../matchmaking/new-player-dialog/new-player-dialog.component";
-import {PlayerDto} from "../dto/player.dto";
+import {TopBarComponent} from "../top-bar/top-bar.component";
+import {MatchmakingService} from "../services/matchmaking.service";
 
 @Component({
   selector: 'app-game',
@@ -22,7 +20,8 @@ import {PlayerDto} from "../dto/player.dto";
     MatDivider,
     ScoreComponent,
     PlayerCardComponent,
-    NgForOf
+    NgForOf,
+    TopBarComponent
   ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
@@ -39,6 +38,7 @@ export class GameComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private gameService: GameService,
+    private matchmakingService: MatchmakingService,
     private router: Router,
   ) {
   }
@@ -51,6 +51,13 @@ export class GameComponent implements OnInit {
       let game: CreateGameDto = response as CreateGameDto;
       this.firstTeam = game.firstTeam;
       this.secondTeam = game.secondTeam;
+    });
+  }
+
+  async onEsc() {
+    (await this.matchmakingService.cancelGame(this.gameId)).subscribe(response => {
+      console.info('Game cancelled');
+      this.router.navigate(['/']).then(r => console.info('Navigated to home'));
     });
   }
 

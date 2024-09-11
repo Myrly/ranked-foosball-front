@@ -1,4 +1,4 @@
-<app-top-bar [content]="'center-content'" [escDisabled]="dialogOpen">
+<app-top-bar [content]="'center-content'" [escDisabled]="dialogOpen" [escAction]="onEsc.bind(this)">
   <mat-spinner *ngIf="isLoading" [diameter]="50" class="spinner"></mat-spinner>
   <div class="matchmaking" *ngIf="!isLoading">
     <div class="teams">

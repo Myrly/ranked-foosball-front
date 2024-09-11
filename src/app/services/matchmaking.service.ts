@@ -20,7 +20,7 @@ export class MatchmakingService {
 
   async cancelGame(gameId: string) {
     return this.http.delete(environment.apiUrl + "/game/" + gameId, {
-      body: new CancelGameDto(gameId)
+      body: new CancelGameDto(gameId, true)
     });
   }
 

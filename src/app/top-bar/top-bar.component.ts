@@ -15,6 +15,9 @@ export class TopBarComponent {
   @Input() content: 'center-content' | 'avoid-top-bar' = 'center-content';
   @Input() escDisabled: boolean = false;
   @Input() rightText: string = '';
+  @Input() escAction: Function = () => {
+  }
+  @Input() escText: string = 'Back'
 
   constructor(private router: Router) {
   }
@@ -24,6 +27,9 @@ export class TopBarComponent {
     if (this.escDisabled) return;
     switch (event.key) {
       case 'Escape':
+        if (this.escAction) {
+          this.escAction();
+        }
         this.navigate();
         event.preventDefault();
         break;
