@@ -74,7 +74,6 @@ export class MatchmakingComponent implements OnInit {
         let allPlayer: (string | 'current' | 'queued')[] = this.team1.concat(this.team2);
         let playerIndex: number = allPlayer.indexOf('current');
         (await this.matchmakingService.addPlayerToGame(this.gameID, this.currentPlayerId, playerIndex <= this.team1.length-1)).subscribe(response => {
-          this.currentPlayerId = '';
           if (typeof response === 'number') {
             switch (response) {
               case 404:
@@ -88,13 +87,11 @@ export class MatchmakingComponent implements OnInit {
                 dialogRef.afterClosed().subscribe(async result => {
                   this.dialogOpen = false;
                   if (!result) return;
-                  (await this.playerService.createPlayer(result.badgeId, result.name)).subscribe(response => {
+                  (await this.playerService.createPlayer(this.currentPlayerId, result.name)).subscribe(response => {
                     this.addPlayer((response as PlayerDto)._id, allPlayer, playerIndex);
                   });
-                  (await this.matchmakingService.addPlayerToGame(this.gameID, result.badgeId, playerIndex <= this.team1.length-1)).subscribe(response => {
-                    if (response === 200) {
-                      this.currentPlayerId = result.badgeId;
-                    }
+                  (await this.matchmakingService.addPlayerToGame(this.gameID, this.currentPlayerId, playerIndex <= this.team1.length-1)).subscribe(response => {
+                    console.info('Player added to game');
                   });
                 });
                 break;
@@ -103,6 +100,7 @@ export class MatchmakingComponent implements OnInit {
           } else {
             this.addPlayer(response as string, allPlayer, playerIndex);
           }
+          this.currentPlayerId = '';
         });
         break;
       default:

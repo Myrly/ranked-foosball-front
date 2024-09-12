@@ -6,11 +6,12 @@ import {
   MatDialogContent,
   MatDialogActions
 } from '@angular/material/dialog';
-import {FormsModule, ReactiveFormsModule, UntypedFormControl, Validators} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {MatButton} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
+import {nameValidator} from "../../validators/name-validator";
 
 @Component({
   selector: 'app-edition-dialog',
@@ -31,7 +32,7 @@ import {MatInput} from "@angular/material/input";
   styleUrls: ['./edition-dialog.component.scss']
 })
 export class EditionDialogComponent implements OnInit, AfterViewInit {
-  nameController = new UntypedFormControl('', Validators.required);
+  nameController: FormControl<string | null> = new FormControl<string | null>('', [Validators.required, nameValidator()]);
   badgeId = '';
   badgeToConfirm = false;
 
